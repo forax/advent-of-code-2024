@@ -8,13 +8,17 @@ void main() {
       1 3 6 7 9
       """;
 
-  println(text.lines().filter(l -> Arrays.stream(l.split(" ")).map(Integer::parseInt)
+  enum Order { ASCENDING, DESCENDING, INVALID }
+  println(text.lines().flatMap(l -> Arrays.stream(l.split(" ")).map(Integer::parseInt)
       .gather(Gatherers.windowSliding(2))
       .map(pair -> switch (pair.getFirst() - pair.getLast()) {
-        case -3, -2, -1 -> "ascending";
-        case 1, 2, 3 -> "decending";
-        default -> "invalid";
+        case -3, -2, -1  -> Order.ASCENDING;
+        case 1, 2, 3 -> Order.DESCENDING;
+        default -> Order.INVALID;
       })
-      .reduce((s, s2) -> s != s2 ? "invalid" : s)
-      .map(v -> v != "invalid").orElse(true)).count());
+      .gather(Gatherer.ofSequential(() -> new Object() { Order o; }, (s,  e, d) ->  {
+        if (e != Order.INVALID && s.o == null || s.o == e) { s.o = e; return true; }
+        s.o = Order.INVALID; return false;
+      }, (s, d) -> { if (s.o != Order.INVALID) { d.push(l); }})))
+      .count());
 }
