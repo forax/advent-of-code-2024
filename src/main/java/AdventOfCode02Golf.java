@@ -16,7 +16,7 @@ void main() {
         case 1, 2, 3 -> Order.DESCENDING;
         default -> Order.INVALID;
       })
-      .gather(Gatherer.ofSequential(() -> new Object() { Order o; }, (s,  e, d) ->  {
+      .gather(Gatherer.ofSequential(() -> new Object() { Order o; }, (s,  e, _) ->  {
         if (e != Order.INVALID && s.o == null || s.o == e) { s.o = e; return true; }
         s.o = Order.INVALID; return false;
       }, (s, d) -> { if (s.o != Order.INVALID) { d.push(l); }})))
