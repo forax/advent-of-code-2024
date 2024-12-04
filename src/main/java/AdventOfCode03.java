@@ -1,4 +1,4 @@
-static final Pattern PATTERN = Pattern.compile("mul\\(([0-9]+)\\,([0-9]+)\\)");
+static final Pattern PATTERN = Pattern.compile("mul\\((\\d{1,3})\\,(\\d{1,3})\\)");
 
 record Pair(int left, int right) {}
 
