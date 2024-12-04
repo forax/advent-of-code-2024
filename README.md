@@ -10,7 +10,7 @@ java src/main/java/AdventOfCode01.java
 ```
 
 - [Day  1](https://adventofcode.com/2024/day/1) [AdventOfCode01.java](src/main/java/AdventOfCode01.java) [AdventOfCode01Golf.java](src/main/java/AdventOfCode01Golf.java)
-- [Day  2](https://adventofcode.com/2024/day/2) [AdventOfCode02.java](src/main/java/AdventOfCode02.java) [AdventOfCode02Golf.java](src/main/java/AdventOfCode02Golf.java)
+- [Day  2](https://adventofcode.com/2024/day/2) [AdventOfCode02.java](src/main/java/AdventOfCode02.java) [AdventOfCode02Golf.java](src/main/java/AdventOfCode02Golf.java) [AdventOfCode02Golf2.java](src/main/java/AdventOfCode02Golf2.java)
 - [Day  3](https://adventofcode.com/2024/day/3) [AdventOfCode03.java](src/main/java/AdventOfCode03.java) [AdventOfCode03Golf.java](src/main/java/AdventOfCode03Golf.java)
 
 Each code will be published the day after.
