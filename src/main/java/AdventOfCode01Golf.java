@@ -1,5 +1,5 @@
 void main() {
-  var text = """
+  var input = """
       3   4
       4   3
       2   5
@@ -7,10 +7,10 @@ void main() {
       3   9
       3   3
       """;
-  var s1 = text.lines()
+  var s1 = input.lines()
       .mapToInt(l -> Integer.parseInt(l, 0, l.indexOf(' '), 10))
       .sorted().spliterator();
-  var s2 = text.lines()
+  var s2 = input.lines()
       .mapToInt(l -> Integer.parseInt(l, l.lastIndexOf(' ') + 1, l.length(), 10))
       .sorted().spliterator();
   println(StreamSupport.intStream(new Spliterator.OfInt() {

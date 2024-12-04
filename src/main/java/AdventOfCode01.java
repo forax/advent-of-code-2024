@@ -20,7 +20,7 @@ int sumOfDistances(int[] lefts, int[] rights) {
 }
 
 void main() {
-  var text = """
+  var input = """
       3   4
       4   3
       2   5
@@ -29,7 +29,7 @@ void main() {
       3   3
       """;
 
-  var pairs = text.lines().map(l -> parse(l)).toList();
+  var pairs = input.lines().map(l -> parse(l)).toList();
   var lefts = pairs.stream().mapToInt(Pair::left).sorted().toArray();
   var rights = pairs.stream().mapToInt(Pair::right).sorted().toArray();
   println(sumOfDistances(lefts, rights));

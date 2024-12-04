@@ -33,7 +33,7 @@ boolean isArrayValid(int[] values) {
 }
 
 void main() {
-  var text = """
+  var input = """
       7 6 4 2 1
       1 2 7 8 9
       9 7 6 2 1
@@ -42,5 +42,5 @@ void main() {
       1 3 6 7 9
       """;
 
-  println(text.lines().filter(l -> isArrayValid(parseArray(l))).count());
+  println(input.lines().filter(l -> isArrayValid(parseArray(l))).count());
 }

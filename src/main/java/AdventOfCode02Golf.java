@@ -1,5 +1,5 @@
 void main() {
-  var text = """
+  var input = """
       7 6 4 2 1
       1 2 7 8 9
       9 7 6 2 1
@@ -9,7 +9,7 @@ void main() {
       """;
 
   enum Order { ASCENDING, DESCENDING, INVALID }
-  println(text.lines().flatMap(l -> Arrays.stream(l.split(" ")).map(Integer::parseInt)
+  println(input.lines().flatMap(l -> Arrays.stream(l.split(" ")).map(Integer::parseInt)
       .gather(Gatherers.windowSliding(2))
       .map(pair -> switch (pair.getFirst() - pair.getLast()) {
         case -3, -2, -1  -> Order.ASCENDING;
