@@ -8,7 +8,7 @@ record Equation(int test, int[] values) {
       return partial == test;
     }
     var value = values[index];
-    for(var op: ops) {
+    for(var op : ops) {
       if (solve(op.applyAsInt(partial, value), index + 1, ops)) {
         return true;
       }
@@ -19,9 +19,7 @@ record Equation(int test, int[] values) {
   static Equation parse(String line) {
     var tokens = line.split("[: ]+");
     var test = Integer.parseInt(tokens[0]);
-    var values = Arrays.stream(tokens, 1, tokens.length)
-        .mapToInt(Integer::parseInt)
-        .toArray();
+    var values = Arrays.stream(tokens, 1, tokens.length).mapToInt(Integer::parseInt).toArray();
     return new Equation(test, values);
   }
 }
