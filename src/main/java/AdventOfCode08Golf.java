@@ -18,9 +18,7 @@ void main() {
 
   record Pos(int x, int y) {}
   record Grid(char[][] data, int width, int height) {
-    char at(Pos p) {
-      return data[p.y][p.x];
-    }
+    char at(Pos p) { return data[p.y][p.x]; }
     boolean in(Pos p) { return p.x >= 0 && p.x < width && p.y >= 0 && p.y < height; }
   }
   var data = input.lines().map(String::toCharArray).toArray(char[][]::new);
