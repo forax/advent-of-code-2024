@@ -47,7 +47,6 @@ void main() {
 
   var pump = new Pump();
   println(Stream.of("").mapMultiToInt((_, c) -> pump.decode(c)).boxed()
-      .gather(Gatherer.ofSequential(() -> new Object() {int count;}, (c, v, d) -> d.push(c.count++ * v)))
-      .mapToInt(v -> (int) v)
-      .sum());
+      .<Integer>gather(Gatherer.ofSequential(() -> new Object() {int count;}, (c, v, d) -> d.push(c.count++ * v)))
+      .reduce(0, Integer::sum));
 }
