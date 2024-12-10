@@ -1,6 +1,6 @@
 String files(String input) {
   var builder = new StringBuilder();
-  for (int i = 0; i < input.length(); i++) {
+  for (var i = 0; i < input.length(); i++) {
     var letter = i % 2 == 0 ? "" + (i / 2) : ".";
     var repeat = input.charAt(i) - '0';
     builder.append(letter.repeat(repeat));
