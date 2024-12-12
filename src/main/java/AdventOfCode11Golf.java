@@ -15,9 +15,9 @@ void main() {
                 if (s == 0) {
                   return Stream.of(entry(1L, count));
                 }
-                var length = 1 + (long) Math.log10(s);
+                var length = 1 + (int) Math.log10(s);
                 if (length % 2 == 0) {
-                  var divisor = (int) Math.pow(10, length / 2);
+                  var divisor = (long) Math.pow(10, length / 2);
                   return Stream.of(entry(s / divisor, count), entry(s % divisor, count));
                 }
                 return Stream.of(entry(Math.multiplyExact(2024L, s), count));
