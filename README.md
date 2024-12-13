@@ -19,7 +19,8 @@ java src/main/java/AdventOfCode01.java
 - [Day  8](https://adventofcode.com/2024/day/8) [AdventOfCode08.java](src/main/java/AdventOfCode08.java) [AdventOfCode08Golf.java](src/main/java/AdventOfCode08Golf.java)
 - [Day  9](https://adventofcode.com/2024/day/9) [AdventOfCode09.java](src/main/java/AdventOfCode09.java) [AdventOfCode09Golf.java](src/main/java/AdventOfCode09Golf.java) [AdventOfCode09Golf2.java](src/main/java/AdventOfCode09Golf2.java)
 - [Day 10](https://adventofcode.com/2024/day/10) [AdventOfCode10.java](src/main/java/AdventOfCode10.java) [AdventOfCode10Golf.java](src/main/java/AdventOfCode10Golf.java)
-- [Day 11](https://adventofcode.com/2024/day/11) [AdventOfCode10.java](src/main/java/AdventOfCode11.java) [AdventOfCode11Golf.java](src/main/java/AdventOfCode11Golf.java)
+- [Day 11](https://adventofcode.com/2024/day/11) [AdventOfCode11.java](src/main/java/AdventOfCode11.java) [AdventOfCode11Golf.java](src/main/java/AdventOfCode11Golf.java)
+- [Day 12](https://adventofcode.com/2024/day/12) [AdventOfCode12.java](src/main/java/AdventOfCode12.java) [AdventOfCode12Golf.java](src/main/java/AdventOfCode12Golf.java)
 
 Each code will be published the day after.
 
