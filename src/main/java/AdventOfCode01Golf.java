@@ -7,6 +7,7 @@ void main() {
       3   9
       3   3
       """;
+
   var s1 = input.lines()
       .mapToInt(l -> Integer.parseInt(l, 0, l.indexOf(' '), 10))
       .sorted().spliterator();
