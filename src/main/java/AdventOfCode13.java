@@ -28,12 +28,14 @@ Optional<Pair> solve(int a1, int b1, int c1, int a2, int b2, int c2) {
   if (determinant == 0) {
     return Optional.empty(); // no unique solution
   }
-  var x = (b2 * c1 - b1 * c2) / (double) determinant;
-  var y = (a1 * c2 - a2 * c1) / (double) determinant;
-  var ix = (int) x;
-  var iy = (int) y;
-  if (x == ix && y == iy && ix >= 0 && iy >=0) {
-    return Optional.of(new Pair(ix, iy));
+  var xNum = b2 * c1 - b1 * c2;
+  var yNum = a1 * c2 - a2 * c1;
+  if (xNum % determinant == 0 && yNum % determinant == 0) {
+    var x = xNum / determinant;
+    var y = yNum / determinant;
+    if (x >= 0 && y >= 0) {
+      return Optional.of(new Pair(x, y));
+    }
   }
   return Optional.empty();
 }
