@@ -24,12 +24,12 @@ void main() {
       .gather(Gatherers.windowFixed(3))
       .flatMap(l -> new Object() {
           Stream<int[]> solve(int a1, int b1, int c1, int a2, int b2, int c2) {
-            var determinant = a1 * b2 - a2 * b1;
-            if (determinant == 0) {
+            var det = a1 * b2 - a2 * b1;
+            if (det == 0) {
               return null;
             }
-            var x = (b2 * c1 - b1 * c2) / (double) determinant;
-            var y = (a1 * c2 - a2 * c1) / (double) determinant;
+            var x = (b2 * c1 - b1 * c2) / (double) det;
+            var y = (a1 * c2 - a2 * c1) / (double) det;
             int ix, iy;
             if (x == (ix = (int) x) && y == (iy = (int) y) && ix >= 0 && iy >=0) {
               return Stream.of(new int[] { ix, iy });
