@@ -1,8 +1,3 @@
-import static java.lang.Integer.parseInt;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.mapping;
-import static java.util.stream.Collectors.toSet;
-
 boolean isValidUpdates(List<Integer> update, Map<Integer, Set<Integer>> ruleMap) {
   for (var i = 0; i < update.size() - 1; i++) {
     var page = update.get(i);
@@ -61,7 +56,7 @@ void main() {
   var blankLineIndex = input.indexOf("\n\n");
   var ruleMap = input.substring(0, blankLineIndex).lines()
        .map(l -> l.split("\\|"))
-       .collect(groupingBy(t -> parseInt(t[1]), mapping(t -> parseInt(t[0]), toSet())));
+       .collect(Collectors.groupingBy(t -> Integer.parseInt(t[1]), Collectors.mapping(t -> Integer.parseInt(t[0]), Collectors.toSet())));
   var updates = input.substring( blankLineIndex + 2).lines()
       .map(l -> Arrays.stream(l.split(",")).map(Integer::parseInt).toList())
       .toList();
