@@ -19,9 +19,8 @@ void main() {
 
   var pattern = Pattern.compile("(\\d+)");
   println(input.lines()
-      .filter(Predicate.not(String::isEmpty))
       .map(l -> pattern.matcher(l).results().mapToInt(r -> Integer.parseInt(r.group())).toArray())
-      .gather(Gatherers.windowFixed(3))
+      .gather(Gatherers.windowFixed(4))
       .flatMap(l -> new Object() {
           Stream<int[]> solve(int a1, int b1, int c1, int a2, int b2, int c2) {
             var det = a1 * b2 - a2 * b1;
