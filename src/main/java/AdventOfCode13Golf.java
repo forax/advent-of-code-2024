@@ -28,10 +28,10 @@ void main() {
             if (det == 0) {
               return null;
             }
-            var x = (b2 * c1 - b1 * c2) / (double) det;
-            var y = (a1 * c2 - a2 * c1) / (double) det;
+            var xNum = b2 * c1 - b1 * c2;
+            var yNum = a1 * c2 - a2 * c1;
             int ix, iy;
-            if (x == (ix = (int) x) && y == (iy = (int) y) && ix >= 0 && iy >=0) {
+            if (xNum % det == 0 && yNum % det == 0 && (ix = xNum / det) >= 0 && (iy = yNum / det) >=0) {
               return Stream.of(new int[] { ix, iy });
             }
             return null;
