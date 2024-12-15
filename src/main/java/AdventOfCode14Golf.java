@@ -16,7 +16,7 @@ void main() {
   var width = 11;
   var height = 7;
 
-  var pattern = Pattern.compile("([-]?\\d+)");
+  var pattern = Pattern.compile("(-?\\d+)");
   println(input.lines()
       .map(l -> pattern.matcher(l).results().mapToInt(r -> Integer.parseInt(r.group())).toArray())
       .map(robot -> {
