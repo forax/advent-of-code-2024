@@ -25,24 +25,33 @@ record Grid(char[][] data, int width, int height) {
   char at(Pos p) {
     return data[p.y][p.x];
   }
+}
 
-  boolean in(Pos p) {
-    return p.x >= 0 && p.x < width && p.y >= 0 && p.y < height;
+Pos findStart(Grid grid) {
+  Pos start = null, end = null;
+  for(var j = 0; j < grid.height; j++) {
+    for(var i = 0; i < grid.width; i++) {
+      var pos = new Pos(i, j);
+      if (grid.at(pos) == 'S') {
+       return pos;
+      }
+    }
   }
+  throw new IllegalArgumentException("no start");
 }
 
 record Pair(Pos pos, Dir dir) {}
 
-int walk(Pos pos, Dir dir, Pos end, Grid grid, Map<Pos, Integer> map, int points, List<Pair> path) {
-  path.add(new Pair(pos, dir));
-  if (pos.equals(end)) {
+int walk(Pos pos, Dir dir, Grid grid, Map<Pair, Integer> map, int points) {
+  if (grid.at(pos) == 'E') {
     return points;
   }
-  var p = map.getOrDefault(pos, Integer.MAX_VALUE);
-  if (p <= points) {
+  var pair = new Pair(pos, dir);
+  var previousPoints = map.getOrDefault(pair, Integer.MAX_VALUE);
+  if (previousPoints <= points) {
     return Integer.MAX_VALUE;
   }
-  map.put(pos, points);
+  map.put(pair, points);
   var value = Integer.MAX_VALUE;
   for(var i = 0; i < DIRS.length; i++) {
     var d = dir.next(i);
@@ -50,31 +59,10 @@ int walk(Pos pos, Dir dir, Pos end, Grid grid, Map<Pos, Integer> map, int points
     if (grid.at(nextPos) == '#') {
       continue;
     }
-    var v = walk(nextPos,  d, end, grid, map, points + POINTS[i], new ArrayList<>(path));
+    var v = walk(nextPos,  d, grid, map, points + POINTS[i]);
     value = Math.min(value, v);
   }
   return value;
-}
-
-String debug(Grid grid, List<Pair> path) {
-  var map = path.stream().collect(Collectors.toMap(Pair::pos, Pair::dir));
-  var builder = new StringBuilder();
-  for(var j = 0; j < grid.height; j++) {
-    for (var i = 0; i < grid.width; i++) {
-      var pos = new Pos(i, j);
-      var dir = map.get(pos);
-      var letter = switch (dir) {
-        case null -> grid.at(pos);
-        case EAST -> '>';
-        case WEST -> '<';
-        case NORTH -> '^';
-        case SOUTH -> 'v';
-      };
-      builder.append(letter);
-    }
-    builder.append('\n');
-  }
-  return builder.toString();
 }
 
 void main() {
@@ -100,16 +88,6 @@ void main() {
 
   var data = input.lines().map(String::toCharArray).toArray(char[][]::new);
   var grid = new Grid(data, data[0].length, data.length);
-  Pos start = null, end = null;
-  for(var j = 0; j < grid.height; j++) {
-    for(var i = 0; i < grid.width; i++) {
-      var pos = new Pos(i, j);
-      switch (grid.at(pos)) {
-        case 'S' -> start = pos;
-        case 'E' -> end = pos;
-      }
-    }
-  }
-  var points = walk(start, Dir.EAST, end, grid, new HashMap<>(), 0, new ArrayList<>());
-  println(points);
+  var start = findStart(grid);
+  println(walk(start, Dir.EAST, grid, new HashMap<>(), 0));
 }
