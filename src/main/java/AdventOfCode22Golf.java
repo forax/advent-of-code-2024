@@ -1,6 +1,6 @@
 record Expr(long[] bits) {
   public long eval(long value) {
-    return IntStream.range(0, 64).mapToLong(i -> ((long) Long.bitCount(value & bits[i]) & 1) << i).reduce(0L, (a, b) -> a | b);
+    return IntStream.range(0, 64).mapToLong(i -> (Long.bitCount(value & bits[i]) & 1L) << i).reduce(0L, (a, b) -> a | b);
   }
 
   Expr lshift(int shift) {
